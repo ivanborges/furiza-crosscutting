@@ -13,23 +13,23 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  #Caching.Abstractions
-  CachingAbstractionsVersion: '1.0.0'
-  CachingAbstractionsPushToNuget: True
   #Caching
-  CachingVersion: '1.0.0'
+  CachingVersion: '1.0.1'
   CachingPushToNuget: True
+  #Caching.Abstractions
+  CachingAbstractionsVersion: '1.0.1'
+  CachingAbstractionsPushToNuget: True  
   #Extensions.Configuration
-  ExtensionsConfigurationVersion: '1.0.0'
+  ExtensionsConfigurationVersion: '1.0.1'
   ExtensionsConfigurationPushToNuget: True
   #Extensions.Enumerable
-  ExtensionsEnumerableVersion: '1.0.0'
+  ExtensionsEnumerableVersion: '1.0.1'
   ExtensionsEnumerablePushToNuget: True
   #Logging
-  LoggingVersion: '1.0.0'
+  LoggingVersion: '1.0.1'
   LoggingPushToNuget: True
   #Newtonsoft.Json
-  NewtonsoftJsonVersion: '1.0.0'
+  NewtonsoftJsonVersion: '1.0.1'
   NewtonsoftJsonPushToNuget: True
 
 steps:
@@ -72,25 +72,6 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: Publish Artifacts
 
-# Publish Furiza.Caching.Abstractions to NuGet.org
-- task: DotNetCoreCLI@2
-  displayName: Pack Furiza.Caching.Abstractions
-  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
-  inputs:
-    command: pack
-    packagesToPack: '**/**/Furiza.Caching.Abstractions.csproj'
-    versioningScheme: byEnvVar
-    versionEnvVar: CachingAbstractionsVersion
-- task: NuGetCommand@2
-  displayName: Push Furiza.Caching.Abstractions to NuGet.org
-  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
-  continueOnError: True
-  inputs:
-    command: push
-    nuGetFeedType: external
-    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Caching.Abstractions.*.nupkg'
-    publishFeedCredentials: 'apikey-nuget-crosscutting-caching.abstractions'
-
 # Publish Furiza.Caching to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Caching
@@ -109,6 +90,25 @@ steps:
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Caching.*.nupkg'
     publishFeedCredentials: 'apikey-nuget-crosscutting-caching'
+
+# Publish Furiza.Caching.Abstractions to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Caching.Abstractions
+  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Caching.Abstractions.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: CachingAbstractionsVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Caching.Abstractions to NuGet.org
+  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Caching.Abstractions.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-caching.abstractions'
 
 # Publish Furiza.Extensions.Configuration to NuGet.org
 - task: DotNetCoreCLI@2
