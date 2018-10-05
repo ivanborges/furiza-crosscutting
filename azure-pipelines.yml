@@ -15,22 +15,22 @@ variables:
   buildConfiguration: 'Release'
   #Caching
   CachingVersion: '1.0.1'
-  CachingPushToNuget: True
+  CachingPushToNuget: False
   #Caching.Abstractions
   CachingAbstractionsVersion: '1.0.1'
-  CachingAbstractionsPushToNuget: True  
+  CachingAbstractionsPushToNuget: False
   #Extensions.Configuration
   ExtensionsConfigurationVersion: '1.0.1'
-  ExtensionsConfigurationPushToNuget: True
+  ExtensionsConfigurationPushToNuget: False
   #Extensions.Enumerable
   ExtensionsEnumerableVersion: '1.0.1'
-  ExtensionsEnumerablePushToNuget: True
+  ExtensionsEnumerablePushToNuget: False
   #Logging
   LoggingVersion: '1.0.1'
-  LoggingPushToNuget: True
+  LoggingPushToNuget: False
   #Newtonsoft.Json
   NewtonsoftJsonVersion: '1.0.1'
-  NewtonsoftJsonPushToNuget: True
+  NewtonsoftJsonPushToNuget: False
 
 steps:
 # Install NuGet Tool
