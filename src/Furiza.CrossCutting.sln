@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Logging", "Furiza.Logging\Furiza.Logging.csproj", "{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Newtonsoft.Json", "Furiza.Newtonsoft.Json\Furiza.Newtonsoft.Json.csproj", "{2FA1EED1-2155-4353-B021-C908A0938E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Extensions.Configuration", "Furiza.Extensions.Configuration\Furiza.Extensions.Configuration.csproj", "{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Extensions.Enumerable", "Furiza.Extensions.Enumerable\Furiza.Extensions.Enumerable.csproj", "{2FBEA054-0000-47BF-8F81-CC941A37139C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Caching", "Furiza.Caching\Furiza.Caching.csproj", "{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Caching.Abstractions", "Furiza.Caching.Abstractions\Furiza.Caching.Abstractions.csproj", "{6FF54888-DD0B-48F6-9755-18334FBF4FDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA1EED1-2155-4353-B021-C908A0938E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA1EED1-2155-4353-B021-C908A0938E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA1EED1-2155-4353-B021-C908A0938E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA1EED1-2155-4353-B021-C908A0938E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBEA054-0000-47BF-8F81-CC941A37139C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBEA054-0000-47BF-8F81-CC941A37139C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBEA054-0000-47BF-8F81-CC941A37139C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBEA054-0000-47BF-8F81-CC941A37139C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56BC1460-B811-491D-BD77-96B6A62205AA}
+	EndGlobalSection
+EndGlobal
