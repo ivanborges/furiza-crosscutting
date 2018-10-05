@@ -14,8 +14,8 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   #Caching
-  CachingVersion: '1.0.1'
-  CachingPushToNuget: False
+  CachingVersion: '1.0.2'
+  CachingPushToNuget: True
   #Caching.Abstractions
   CachingAbstractionsVersion: '1.0.1'
   CachingAbstractionsPushToNuget: False
