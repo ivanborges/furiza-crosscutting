@@ -1,9 +1,9 @@
-﻿using Furiza.Caching.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Furiza.Caching;
+using Furiza.Caching.Abstractions;
 using System;
 using System.Linq;
 
-namespace Furiza.Caching.Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
