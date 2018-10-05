@@ -1,0 +1,187 @@
+pool:
+  vmImage: 'VS2017-Win2016'
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - README.md
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  #Caching.Abstractions
+  CachingAbstractionsVersion: '1.0.0'
+  CachingAbstractionsPushToNuget: True
+  #Caching
+  CachingVersion: '1.0.0'
+  CachingPushToNuget: True
+  #Extensions.Configuration
+  ExtensionsConfigurationVersion: '1.0.0'
+  ExtensionsConfigurationPushToNuget: True
+  #Extensions.Enumerable
+  ExtensionsEnumerableVersion: '1.0.0'
+  ExtensionsEnumerablePushToNuget: True
+  #Logging
+  LoggingVersion: '1.0.0'
+  LoggingPushToNuget: True
+  #Newtonsoft.Json
+  NewtonsoftJsonVersion: '1.0.0'
+  NewtonsoftJsonPushToNuget: True
+
+steps:
+# Install NuGet Tool
+- task: NuGetToolInstaller@0
+  displayName: Install NuGet Tool
+
+# Restore NuGet packages
+- task: NuGetCommand@2
+  displayName: Restore NuGet Packages
+  inputs:
+    restoreSolution: '$(solution)'
+
+# Build solution
+- task: VSBuild@1
+  displayName: Build Solution
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+# Run unit tests
+- task: VSTest@2
+  displayName: Run Unit Tests
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+# Prepare publish files
+- task: DotNetCoreCLI@2
+  displayName: Prepare Publish Files
+  inputs:
+    command: publish
+    publishWebProjects: False
+    projects: '**/**/Furiza.*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: False
+
+# Publish the artifacts
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifacts
+
+# Publish Furiza.Caching.Abstractions to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Caching.Abstractions
+  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Caching.Abstractions.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: CachingAbstractionsVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Caching.Abstractions to NuGet.org
+  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Caching.Abstractions.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-caching.abstractions'
+
+# Publish Furiza.Caching to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Caching
+  condition: eq(variables['CachingPushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Caching.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: CachingVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Caching to NuGet.org
+  condition: eq(variables['CachingPushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Caching.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-caching'
+
+# Publish Furiza.Extensions.Configuration to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Extensions.Configuration
+  condition: eq(variables['ExtensionsConfigurationPushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Extensions.Configuration.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: ExtensionsConfigurationVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Extensions.Configuration to NuGet.org
+  condition: eq(variables['ExtensionsConfigurationPushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Extensions.Configuration.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-extensions.configuration'
+
+# Publish Furiza.Extensions.Enumerable to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Extensions.Enumerable
+  condition: eq(variables['ExtensionsEnumerablePushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Extensions.Enumerable.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: ExtensionsEnumerableVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Extensions.Enumerable to NuGet.org
+  condition: eq(variables['ExtensionsEnumerablePushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Extensions.Enumerable.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-extensions.enumerable'
+
+# Publish Furiza.Logging to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Logging
+  condition: eq(variables['LoggingPushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Logging.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: LoggingVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Logging to NuGet.org
+  condition: eq(variables['LoggingPushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Logging.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-logging'
+
+# Publish Furiza.Newtonsoft.Json to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Newtonsoft.Json
+  condition: eq(variables['NewtonsoftJsonPushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Newtonsoft.Json.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: NewtonsoftJsonVersion
+- task: NuGetCommand@2
+  displayName: Push Furiza.Newtonsoft.Json to NuGet.org
+  condition: eq(variables['NewtonsoftJsonPushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Newtonsoft.Json.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-newtonsoft.json'
