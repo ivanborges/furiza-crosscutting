@@ -16,13 +16,17 @@ namespace Microsoft.Extensions.Configuration
         /// <returns></returns>
         public static T TryGet<T>(this IConfiguration configuration) where T : class
         {
+            var configName = typeof(T).Name;
+            if (configuration.GetChildren().Any(config => config.Key == configName))
+                configuration = configuration.GetSection(configName);
+
             var model = configuration.Get<T>() ??
-                throw new InvalidOperationException($"Configuration section '{typeof(T).FullName}' is missing.");
+                throw new InvalidOperationException($"Configuration section '{typeof(T).Name}' for type '{typeof(T).FullName}' is missing.");
 
             var validationContext = new ValidationContext(model);
             var validationResults = new List<ValidationResult>();
             if (!Validator.TryValidateObject(model, validationContext, validationResults, true))
-                throw new InvalidOperationException($"One or more attributes are missing from the configuration section '{typeof(T).FullName}'. " +
+                throw new InvalidOperationException($"One or more attributes are missing from the configuration section '{typeof(T).Name}' for type '{typeof(T).FullName}'. " +
                     $"---> {string.Join(" | ", validationResults.Select(vr => vr.ErrorMessage))}");
 
             return model;
