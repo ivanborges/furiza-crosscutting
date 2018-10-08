@@ -13,24 +13,24 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  #Caching
-  CachingVersion: '1.0.2'
-  CachingPushToNuget: False
-  #Caching.Abstractions
-  CachingAbstractionsVersion: '1.0.1'
-  CachingAbstractionsPushToNuget: False
-  #Extensions.Configuration
-  ExtensionsConfigurationVersion: '1.0.1'
-  ExtensionsConfigurationPushToNuget: False
-  #Extensions.Enumerable
-  ExtensionsEnumerableVersion: '1.0.1'
-  ExtensionsEnumerablePushToNuget: False
-  #Logging
-  LoggingVersion: '1.0.1'
-  LoggingPushToNuget: False
-  #Newtonsoft.Json
-  NewtonsoftJsonVersion: '1.0.1'
-  NewtonsoftJsonPushToNuget: False
+
+  #Pack1 -------------------
+  ##Caching
+  ##Caching.Abstractions
+  ##Newtonsoft.Json
+  Pack1Version: '1.0.3'
+  Pack1PushToNuget: True
+
+  #Pack2 -------------------
+  ##Logging
+  ##Extensions.Configuration
+  Pack2Version: '1.0.1'
+  Pack2PushToNuget: False
+
+  #Pack3 -------------------
+  ##Extensions.Enumerable
+  Pack3Version: '1.0.1'
+  Pack3PushToNuget: False
 
 steps:
 # Install NuGet Tool
@@ -75,15 +75,15 @@ steps:
 # Publish Furiza.Caching to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Caching
-  condition: eq(variables['CachingPushToNuget'], 'True')
+  condition: eq(variables['Pack1PushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Furiza.Caching.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: CachingVersion
+    versionEnvVar: Pack1Version
 - task: NuGetCommand@2
   displayName: Push Furiza.Caching to NuGet.org
-  condition: eq(variables['CachingPushToNuget'], 'True')
+  condition: eq(variables['Pack1PushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
@@ -94,15 +94,15 @@ steps:
 # Publish Furiza.Caching.Abstractions to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Caching.Abstractions
-  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
+  condition: eq(variables['Pack1PushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Furiza.Caching.Abstractions.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: CachingAbstractionsVersion
+    versionEnvVar: Pack1Version
 - task: NuGetCommand@2
   displayName: Push Furiza.Caching.Abstractions to NuGet.org
-  condition: eq(variables['CachingAbstractionsPushToNuget'], 'True')
+  condition: eq(variables['Pack1PushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
@@ -113,15 +113,15 @@ steps:
 # Publish Furiza.Extensions.Configuration to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Extensions.Configuration
-  condition: eq(variables['ExtensionsConfigurationPushToNuget'], 'True')
+  condition: eq(variables['Pack2PushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Furiza.Extensions.Configuration.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: ExtensionsConfigurationVersion
+    versionEnvVar: Pack2Version
 - task: NuGetCommand@2
   displayName: Push Furiza.Extensions.Configuration to NuGet.org
-  condition: eq(variables['ExtensionsConfigurationPushToNuget'], 'True')
+  condition: eq(variables['Pack2PushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
@@ -132,15 +132,15 @@ steps:
 # Publish Furiza.Extensions.Enumerable to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Extensions.Enumerable
-  condition: eq(variables['ExtensionsEnumerablePushToNuget'], 'True')
+  condition: eq(variables['Pack3PushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Furiza.Extensions.Enumerable.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: ExtensionsEnumerableVersion
+    versionEnvVar: Pack3Version
 - task: NuGetCommand@2
   displayName: Push Furiza.Extensions.Enumerable to NuGet.org
-  condition: eq(variables['ExtensionsEnumerablePushToNuget'], 'True')
+  condition: eq(variables['Pack3PushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
@@ -151,15 +151,15 @@ steps:
 # Publish Furiza.Logging to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Logging
-  condition: eq(variables['LoggingPushToNuget'], 'True')
+  condition: eq(variables['Pack2PushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Furiza.Logging.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: LoggingVersion
+    versionEnvVar: Pack2Version
 - task: NuGetCommand@2
   displayName: Push Furiza.Logging to NuGet.org
-  condition: eq(variables['LoggingPushToNuget'], 'True')
+  condition: eq(variables['Pack2PushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
@@ -170,15 +170,15 @@ steps:
 # Publish Furiza.Newtonsoft.Json to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Furiza.Newtonsoft.Json
-  condition: eq(variables['NewtonsoftJsonPushToNuget'], 'True')
+  condition: eq(variables['Pack1PushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Furiza.Newtonsoft.Json.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: NewtonsoftJsonVersion
+    versionEnvVar: Pack1Version
 - task: NuGetCommand@2
   displayName: Push Furiza.Newtonsoft.Json to NuGet.org
-  condition: eq(variables['NewtonsoftJsonPushToNuget'], 'True')
+  condition: eq(variables['Pack1PushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
