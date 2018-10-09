@@ -1,6 +1,6 @@
 ﻿namespace Newtonsoft.Json
 {
-    public class CacheJsonSerializerSettings : JsonSerializerSettings
+    public class CacheJsonSerializerSettings : GeneralJsonSerializerSettings
     {
         public CacheJsonSerializerSettings() : base()
         {
