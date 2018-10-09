@@ -15,7 +15,7 @@ namespace Newtonsoft.Json.Serialization
             renames = new Dictionary<Type, Dictionary<string, string>>();
         }
 
-        public PropertyRenameAndIgnoreCamelCaseContractResolver IgnoreProperty(Type type, IEnumerable<string> jsonPropertyNames)
+        public PropertyRenameAndIgnoreCamelCaseContractResolver IgnoreProperties(Type type, IEnumerable<string> jsonPropertyNames)
         {
             if (!ignores.ContainsKey(type))
                 ignores[type] = new HashSet<string>();

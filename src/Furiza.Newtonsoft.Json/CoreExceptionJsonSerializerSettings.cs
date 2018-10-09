@@ -8,8 +8,8 @@ namespace Newtonsoft.Json
     {
         public CoreExceptionJsonSerializerSettings() : base()
         {
-            ContractResolver = new PropertyRenameAndIgnoreCamelCaseContractResolver()
-                .IgnoreProperty(typeof(Exception), typeof(Exception)
+            ContractResolver = new PropertyRenameAndIgnoreCamelCaseContractResolver() { IgnoreSerializableInterface = true }
+                .IgnoreProperties(typeof(Exception), typeof(Exception)
                     .GetProperties()
                     .Where(p => p.Name != nameof(Exception.Message))
                     .Select(p => p.Name));
