@@ -44,10 +44,10 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}' is missing.");
 
             if (logConfiguration.Serilog.Using == null)
-                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.Using)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
+                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.Using)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}' is missing.");
 
             if (!logConfiguration.Serilog.Using.Any())
-                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.Using)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' must have at least 1 serilog package reference.");
+                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.Using)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}' must have at least 1 serilog package reference.");
 
             if (logConfiguration.Serilog.MinimumLevel == null)
                 throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
