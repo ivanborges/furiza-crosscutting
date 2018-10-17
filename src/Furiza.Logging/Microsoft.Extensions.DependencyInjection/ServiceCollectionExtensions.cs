@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Serilog.Formatting.Json;
 using System;
+using System.Linq;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -18,24 +18,14 @@ namespace Microsoft.Extensions.DependencyInjection
             switch (logConfiguration.Tool.Value)
             {
                 case LogTool.Serilog:
-                    if (logConfiguration.Serilog == null)
-                        throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}' is missing.");
+                    ValidateSerilogStructure(logConfiguration);
 
-                    if (logConfiguration.Serilog.MinimumLevel == null)
-                        throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
-
-                    if (string.IsNullOrWhiteSpace(logConfiguration.Serilog.MinimumLevel.Default))
-                        throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.MinimumLevel.Default)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
-                    
                     services.AddLogging(c =>
                     {
                         c.ClearProviders();
 
                         Log.Logger = new LoggerConfiguration()
-                            .Enrich.FromLogContext()
                             .ReadFrom.Configuration(configuration.GetSection(nameof(LogConfiguration)))
-                            .WriteTo.Async(a => a.Console(new JsonFormatter(renderMessage: true)))
-                            .WriteTo.Async(a => a.RollingFile($"logs/{applicationName}-log.txt"))
                             .CreateLogger();
 
                         c.AddSerilog();
@@ -46,6 +36,30 @@ namespace Microsoft.Extensions.DependencyInjection
             }           
 
             return services;
+        }
+
+        private static void ValidateSerilogStructure(LogConfiguration logConfiguration)
+        {
+            if (logConfiguration.Serilog == null)
+                throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}' is missing.");
+
+            if (logConfiguration.Serilog.Using == null)
+                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.Using)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
+
+            if (!logConfiguration.Serilog.Using.Any())
+                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.Using)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' must have at least 1 serilog package reference.");
+
+            if (logConfiguration.Serilog.MinimumLevel == null)
+                throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
+
+            if (string.IsNullOrWhiteSpace(logConfiguration.Serilog.MinimumLevel.Default))
+                throw new InvalidOperationException($"Attribute '{nameof(LogConfiguration.Serilog.MinimumLevel.Default)}' for configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.MinimumLevel)}' is missing.");
+
+            if (logConfiguration.Serilog.WriteTo == null)
+                throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.WriteTo)}' is missing.");
+
+            if (!logConfiguration.Serilog.WriteTo.Any())
+                throw new InvalidOperationException($"Configuration section '{nameof(LogConfiguration)}.{nameof(LogConfiguration.Serilog)}.{nameof(LogConfiguration.Serilog.WriteTo)}' must have at least 1 logging output.");
         }
     }
 }
