@@ -5,6 +5,10 @@
     <Authors>Furīza</Authors>
     <Copyright>Furīza (C) 2018</Copyright>
     <PackageProjectUrl>https://github.com/ivanborges/furiza-crosscutting</PackageProjectUrl>
+    <PackageTags>furiza;crosscutting;extensions;enumerable</PackageTags>
+    <PackageIconUrl>https://www.imagemhost.com.br/images/2018/10/17/furiza_logo.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/ivanborges/furiza-crosscutting</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Description>This package add extension methods to IConfiguration interface.</Description>
   </PropertyGroup>
 
