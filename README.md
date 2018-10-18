@@ -2,7 +2,7 @@
 [![Build Status](https://dev.azure.com/ivanborges/Furiza/_apis/build/status/furiza-crosscutting)](https://dev.azure.com/ivanborges/Furiza/_build/latest?definitionId=5)
 [![CodeFactor](https://www.codefactor.io/repository/github/ivanborges/furiza-crosscutting/badge)](https://www.codefactor.io/repository/github/ivanborges/furiza-crosscutting)
 [![GitHub release](https://img.shields.io/github/release/ivanborges/furiza-crosscutting.svg)](https://github.com/ivanborges/furiza-crosscutting/releases)
-# :sagittarius: furiza-crosscutting
+# furiza-crosscutting
 Common packages for crosscutting concerns (includes logger, cacher, extensions methods and json serialization settings).
 
 ## Packages
