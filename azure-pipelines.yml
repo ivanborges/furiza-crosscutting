@@ -49,8 +49,8 @@ steps:
   inputs:
     SonarCloud: 'apikey-sonar-crosscutting'
     organization: 'ivanborges-github'
-    projectKey: 'ivanborges_furiza-base-crosscutting'
-    projectName: 'furiza-base-crosscutting'
+    projectKey: 'ivanborges_furiza-crosscutting'
+    projectName: 'furiza-crosscutting'
 
 # Build solution
 - task: VSBuild@1
