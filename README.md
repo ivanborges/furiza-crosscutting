@@ -5,7 +5,7 @@
 # furiza-crosscutting
 Common packages for crosscutting concerns (includes logger, cacher, extensions methods and json serialization settings).
 
-## Packages
+## Packages details
 ||Version & Downloads|
 |---------------------------|:---:|
 |**Furiza.Caching.Abstractions**|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Caching.Abstractions)](https://www.nuget.org/packages/Furiza.Caching.Abstractions)|
