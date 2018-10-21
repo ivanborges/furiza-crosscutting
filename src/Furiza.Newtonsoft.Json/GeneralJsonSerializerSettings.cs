@@ -6,7 +6,7 @@ namespace Newtonsoft.Json
 {
     public class GeneralJsonSerializerSettings : JsonSerializerSettings
     {
-        private PropertyRenameAndIgnoreCamelCaseContractResolver contractResolver = new PropertyRenameAndIgnoreCamelCaseContractResolver();
+        private readonly PropertyRenameAndIgnoreCamelCaseContractResolver contractResolver = new PropertyRenameAndIgnoreCamelCaseContractResolver();
 
         public GeneralJsonSerializerSettings() : base()
         {
