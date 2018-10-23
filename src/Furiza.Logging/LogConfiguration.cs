@@ -7,6 +7,6 @@ namespace Furiza.Logging
         [Required]
         public LogTool? Tool { get; set; }
 
-        public LogConfigurationSerilog Serilog { get; set; }
+        public LogWriteTo WriteToType { get; set; } = LogWriteTo.Console;
     }
 }
