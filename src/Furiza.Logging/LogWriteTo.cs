@@ -2,7 +2,7 @@
 {
     public enum LogWriteTo
     {
-        Raw,
+        Custom,
         Console,
         File
     }
