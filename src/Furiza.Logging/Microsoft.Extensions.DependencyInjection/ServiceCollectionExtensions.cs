@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddFurizaLogging(this IServiceCollection services, IConfiguration configuration, string applicationName)
+        public static IServiceCollection AddFurizaLogging(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         .ReadFrom.Configuration(configuration.GetSection(nameof(LogConfiguration)))
                         .Enrich.WithExceptionDetails();
 
-                    if (logConfiguration.WriteToType != LogWriteTo.Raw)
+                    if (logConfiguration.WriteToType != LogWriteTo.Custom)
                     {
                         loggerConfiguration = loggerConfiguration
                             .Enrich.FromLogContext()
