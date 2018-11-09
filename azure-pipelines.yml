@@ -24,8 +24,8 @@ variables:
   #Pack2 -------------------
   ##Logging
   ##Extensions.Configuration
-  Pack2Version: '1.0.8'
-  Pack2PushToNuget: False
+  Pack2Version: '1.0.9'
+  Pack2PushToNuget: True
 
   #Pack3 -------------------
   ##Extensions.Enumerable
