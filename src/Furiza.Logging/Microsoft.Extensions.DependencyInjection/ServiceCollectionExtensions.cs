@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Formatting.Json;
 using System;
@@ -20,6 +21,10 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 case LogTool.Serilog:
                     var loggerConfiguration = new LoggerConfiguration()
+                        .MinimumLevel.Debug()
+                        .MinimumLevel.Override("System", LogEventLevel.Error)
+                        .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+                        .MinimumLevel.Override("Furiza", LogEventLevel.Warning)
                         .ReadFrom.Configuration(configuration.GetSection(nameof(LogConfiguration)))
                         .Enrich.WithExceptionDetails();
 
