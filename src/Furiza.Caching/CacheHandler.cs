@@ -65,7 +65,9 @@ namespace Furiza.Caching
             }
         }
 
-        public async Task SetAsync<T>(string key, T value, IEnumerable<string> namesOfPropertiesToIgnore = null) where T : class
+        public async Task SetAsync<T>(string key, T value) where T : class => await SetAsync<T>(key, value, null);
+
+        public async Task SetAsync<T>(string key, T value, IEnumerable<string> namesOfPropertiesToIgnore) where T : class
         {
             if (!cacheConfiguration.Enable.Value)
                 return;
