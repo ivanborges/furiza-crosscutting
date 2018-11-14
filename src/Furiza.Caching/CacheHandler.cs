@@ -3,6 +3,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -64,14 +65,16 @@ namespace Furiza.Caching
             }
         }
 
-        public async Task SetAsync<T>(string key, T value) where T : class
+        public async Task SetAsync<T>(string key, T value) where T : class => await SetAsync<T>(key, value, null);
+
+        public async Task SetAsync<T>(string key, T value, IEnumerable<string> namesOfPropertiesToIgnore) where T : class
         {
             if (!cacheConfiguration.Enable.Value)
                 return;
 
             var fullKey = BuildKey(typeof(T), key);
             var expiration = GetExpiration(typeof(T));
-            var cache = JsonConvert.SerializeObject(value, typeof(T), Formatting.Indented, new CacheJsonSerializerSettings());
+            var cache = JsonConvert.SerializeObject(value, typeof(T), Formatting.Indented, new CacheJsonSerializerSettings().IgnoreProperties(typeof(T), namesOfPropertiesToIgnore));
 
             try
             {

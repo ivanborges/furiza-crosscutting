@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Newtonsoft.Json.Serialization
@@ -17,6 +18,9 @@ namespace Newtonsoft.Json.Serialization
 
         public PropertyRenameAndIgnoreCamelCaseContractResolver IgnoreProperties(Type type, IEnumerable<string> jsonPropertyNames)
         {
+            if (jsonPropertyNames == null || !jsonPropertyNames.Any())
+                return this;
+
             if (!ignores.ContainsKey(type))
                 ignores[type] = new HashSet<string>();
 
