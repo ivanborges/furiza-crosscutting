@@ -19,7 +19,7 @@ variables:
   ##Caching.Abstractions
   ##Newtonsoft.Json
   Pack1Version: '1.0.8'
-  Pack1PushToNuget: True
+  Pack1PushToNuget: False
 
   #Pack2 -------------------
   ##Logging
