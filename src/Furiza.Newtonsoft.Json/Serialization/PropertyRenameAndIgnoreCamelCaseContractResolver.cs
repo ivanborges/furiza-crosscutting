@@ -25,7 +25,7 @@ namespace Newtonsoft.Json.Serialization
                 ignores[type] = new HashSet<string>();
 
             foreach (var prop in jsonPropertyNames)
-                ignores[type].Add(prop);
+                ignores[type].Add(prop.ToLower());
 
             return this;
         }
@@ -35,7 +35,7 @@ namespace Newtonsoft.Json.Serialization
             if (!renames.ContainsKey(type))
                 renames[type] = new Dictionary<string, string>();
 
-            renames[type][propertyName] = newJsonPropertyName;
+            renames[type][propertyName.ToLower()] = newJsonPropertyName;
 
             return this;
         }
@@ -61,14 +61,14 @@ namespace Newtonsoft.Json.Serialization
             if (!ignores.ContainsKey(type))
                 return false;
 
-            return ignores[type].Contains(jsonPropertyName);
+            return ignores[type].Contains(jsonPropertyName.ToLower());
         }
 
         private bool IsRenamed(Type type, string jsonPropertyName, out string newJsonPropertyName)
         {
             Dictionary<string, string> _renames;
 
-            if (!renames.TryGetValue(type, out _renames) || !_renames.TryGetValue(jsonPropertyName, out newJsonPropertyName))
+            if (!renames.TryGetValue(type, out _renames) || !_renames.TryGetValue(jsonPropertyName.ToLower(), out newJsonPropertyName))
             {
                 newJsonPropertyName = null;
                 return false;
