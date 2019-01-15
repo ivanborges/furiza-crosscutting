@@ -35,7 +35,7 @@ variables:
   #Pack4 -------------------
   ##Extensions.Enumerable
   Pack4Version: '1.0.0'
-  Pack4PushToNuget: False
+  Pack4PushToNuget: True
 
 steps:
 # Install NuGet Tool
