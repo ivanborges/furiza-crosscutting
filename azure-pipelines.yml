@@ -32,6 +32,11 @@ variables:
   Pack3Version: '1.0.3'
   Pack3PushToNuget: False
 
+  #Pack4 -------------------
+  ##Extensions.Enumerable
+  Pack4Version: '1.0.0'
+  Pack4PushToNuget: False
+
 steps:
 # Install NuGet Tool
 - task: NuGetToolInstaller@0
@@ -202,3 +207,41 @@ steps:
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Newtonsoft.Json.*.nupkg'
     publishFeedCredentials: 'apikey-nuget-crosscutting-newtonsoft.json'
+
+# Publish Furiza.Networking to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Networking
+  condition: eq(variables['Pack4PushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Networking.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: Pack4Version
+- task: NuGetCommand@2
+  displayName: Push Furiza.Networking to NuGet.org
+  condition: eq(variables['Pack4PushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Networking.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-networking'
+
+# Publish Furiza.Networking.Abstractions to NuGet.org
+- task: DotNetCoreCLI@2
+  displayName: Pack Furiza.Networking.Abstractions
+  condition: eq(variables['Pack4PushToNuget'], 'True')
+  inputs:
+    command: pack
+    packagesToPack: '**/**/Furiza.Networking.Abstractions.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: Pack4Version
+- task: NuGetCommand@2
+  displayName: Push Furiza.Networking.Abstractions to NuGet.org
+  condition: eq(variables['Pack4PushToNuget'], 'True')
+  continueOnError: True
+  inputs:
+    command: push
+    nuGetFeedType: external
+    packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Networking.Abstractions.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-networking.abstractions'
