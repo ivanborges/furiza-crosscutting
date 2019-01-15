@@ -225,7 +225,7 @@ steps:
     command: push
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Networking.*.nupkg'
-    publishFeedCredentials: 'apikey-nuget-crosscutting-networking.json'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-networking'
 
 # Publish Furiza.Networking.Abstractions to NuGet.org
 - task: DotNetCoreCLI@2
@@ -244,4 +244,4 @@ steps:
     command: push
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Furiza.Networking.Abstractions.*.nupkg'
-    publishFeedCredentials: 'apikey-nuget-crosscutting-networking.abstractions.json'
+    publishFeedCredentials: 'apikey-nuget-crosscutting-networking.abstractions'
