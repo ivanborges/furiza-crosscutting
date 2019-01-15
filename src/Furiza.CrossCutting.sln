@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Logging", "Furiza.Logging\Furiza.Logging.csproj", "{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Logging", "Furiza.Logging\Furiza.Logging.csproj", "{7F1967A0-B584-4ACA-A7AB-7C9E78D9E53D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Newtonsoft.Json", "Furiza.Newtonsoft.Json\Furiza.Newtonsoft.Json.csproj", "{2FA1EED1-2155-4353-B021-C908A0938E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Newtonsoft.Json", "Furiza.Newtonsoft.Json\Furiza.Newtonsoft.Json.csproj", "{2FA1EED1-2155-4353-B021-C908A0938E1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Extensions.Configuration", "Furiza.Extensions.Configuration\Furiza.Extensions.Configuration.csproj", "{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Extensions.Configuration", "Furiza.Extensions.Configuration\Furiza.Extensions.Configuration.csproj", "{441858BC-4E30-4838-90A4-F6AD7CE2FF1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Extensions.Enumerable", "Furiza.Extensions.Enumerable\Furiza.Extensions.Enumerable.csproj", "{2FBEA054-0000-47BF-8F81-CC941A37139C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Extensions.Enumerable", "Furiza.Extensions.Enumerable\Furiza.Extensions.Enumerable.csproj", "{2FBEA054-0000-47BF-8F81-CC941A37139C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Caching", "Furiza.Caching\Furiza.Caching.csproj", "{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Caching", "Furiza.Caching\Furiza.Caching.csproj", "{B326B39E-FB61-40CA-8ABA-8875AD7C5C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Furiza.Caching.Abstractions", "Furiza.Caching.Abstractions\Furiza.Caching.Abstractions.csproj", "{6FF54888-DD0B-48F6-9755-18334FBF4FDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Caching.Abstractions", "Furiza.Caching.Abstractions\Furiza.Caching.Abstractions.csproj", "{6FF54888-DD0B-48F6-9755-18334FBF4FDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Networking.Abstractions", "Furiza.Networking.Abstractions\Furiza.Networking.Abstractions.csproj", "{C0B4CE27-C2E3-4036-B53B-47ED34CFA259}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furiza.Networking", "Furiza.Networking\Furiza.Networking.csproj", "{B1B5B62F-9D92-4B3D-8914-A0DC07784F70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF54888-DD0B-48F6-9755-18334FBF4FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0B4CE27-C2E3-4036-B53B-47ED34CFA259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B4CE27-C2E3-4036-B53B-47ED34CFA259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B4CE27-C2E3-4036-B53B-47ED34CFA259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B4CE27-C2E3-4036-B53B-47ED34CFA259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B5B62F-9D92-4B3D-8914-A0DC07784F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B5B62F-9D92-4B3D-8914-A0DC07784F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B5B62F-9D92-4B3D-8914-A0DC07784F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B5B62F-9D92-4B3D-8914-A0DC07784F70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
