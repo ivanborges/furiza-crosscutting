@@ -8,7 +8,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/ivanborges/furiza-crosscutting/badge)](https://www.codefactor.io/repository/github/ivanborges/furiza-crosscutting)
 
 # Crosscutting
-Common packages for crosscutting concerns (includes logger, cacher, extensions methods and json serialization settings).
+Common packages for crosscutting concerns (includes logger, cacher, net, extensions methods and json serialization settings).
 
 ## Nuget details
 |Packages|Version & Downloads|
@@ -17,6 +17,8 @@ Common packages for crosscutting concerns (includes logger, cacher, extensions m
 |*Furiza.Caching*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Caching)](https://www.nuget.org/packages/Furiza.Caching)|
 |*Furiza.Extensions.Configuration*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Extensions.Configuration)](https://www.nuget.org/packages/Furiza.Extensions.Configuration)|
 |*Furiza.Extensions.Enumerable*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Extensions.Enumerable)](https://www.nuget.org/packages/Furiza.Extensions.Enumerable)|
+|*Furiza.Networking.Abstractions*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Networking.Abstractions)](https://www.nuget.org/packages/Furiza.Networking.Abstractions)|
+|*Furiza.Networking*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Networking)](https://www.nuget.org/packages/Furiza.Networking)|
 |*Furiza.Logging*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Logging)](https://www.nuget.org/packages/Furiza.Logging)|
 |*Furiza.Newtonsoft.Json*|[![NuGet Version and Downloads count](https://buildstats.info/nuget/Furiza.Newtonsoft.Json)](https://www.nuget.org/packages/Furiza.Newtonsoft.Json)|
 
