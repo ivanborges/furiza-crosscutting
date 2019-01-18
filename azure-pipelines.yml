@@ -36,7 +36,7 @@ variables:
   ##Furiza.Networking
   ##Furiza.Networking.Abstractions
   Pack4Version: '1.0.1'
-  Pack4PushToNuget: True
+  Pack4PushToNuget: False
 
 steps:
 # Install NuGet Tool
