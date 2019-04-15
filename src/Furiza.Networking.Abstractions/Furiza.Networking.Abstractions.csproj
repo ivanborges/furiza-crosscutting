@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>Furīza</Authors>
-    <Copyright>Furīza (C) 2018</Copyright>
-    <PackageProjectUrl>https://github.com/ivanborges/furiza-crosscutting</PackageProjectUrl>
+    <Authors>Furiza</Authors>
+    <Copyright>Furiza (C) 2019</Copyright>
     <PackageTags>furiza;crosscutting;networking;abstractions</PackageTags>
-    <PackageIconUrl>https://www.imagemhost.com.br/images/2018/10/17/furiza_logo_transp_6.png</PackageIconUrl>
+    <PackageIconUrl>https://www.imagemhost.com.br/images/2019/03/22/furiza_escrita_logo_v2.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/ivanborges/furiza-crosscutting</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>This package delivery interfaces to be used in any application concern for http requests.</Description>

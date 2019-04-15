@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>Furīza</Authors>
-    <Copyright>Furīza (C) 2018</Copyright>
-    <PackageProjectUrl>https://github.com/ivanborges/furiza-crosscutting</PackageProjectUrl>
+    <Authors>Furiza</Authors>
+    <Copyright>Furiza (C) 2019</Copyright>
     <PackageTags>furiza;crosscutting;caching</PackageTags>
-    <PackageIconUrl>https://www.imagemhost.com.br/images/2018/10/17/furiza_logo_transp_6.png</PackageIconUrl>
+    <PackageIconUrl>https://www.imagemhost.com.br/images/2019/03/22/furiza_escrita_logo_v2.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/ivanborges/furiza-crosscutting</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>This package configures caching for applications, abstracting the storage used (Memory, SqlServer, Redis, etc.).</Description>
@@ -23,12 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="2.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="system.componentmodel.annotations" Version="4.5.0" />
   </ItemGroup>
 
