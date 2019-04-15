@@ -19,24 +19,24 @@ variables:
   ##Caching.Abstractions
   ##Newtonsoft.Json
   Pack1Version: '1.1.2'
-  Pack1PushToNuget: True
+  Pack1PushToNuget: False
 
   #Pack2 -------------------
   ##Logging
   ##Extensions.Configuration
   Pack2Version: '1.0.10'
-  Pack2PushToNuget: True
+  Pack2PushToNuget: False
 
   #Pack3 -------------------
   ##Extensions.Enumerable
   Pack3Version: '1.0.4'
-  Pack3PushToNuget: True
+  Pack3PushToNuget: False
 
   #Pack4 -------------------
   ##Furiza.Networking
   ##Furiza.Networking.Abstractions
   Pack4Version: '1.0.2'
-  Pack4PushToNuget: True
+  Pack4PushToNuget: False
 
 steps:
 # Install NuGet Tool
